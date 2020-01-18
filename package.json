@@ -1,0 +1,24 @@
+{
+  "name": "web-integ-plataformas",
+  "version": "1.0.0",
+  "description": "App web OKCasa",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rffrench/Web-Integ-Plataformas.git"
+  },
+  "author": "Roberto Ffrench-Davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rffrench/Web-Integ-Plataformas/issues"
+  },
+  "homepage": "https://github.com/Rffrench/Web-Integ-Plataformas#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "oracledb": "^4.1.0"
+  }
+}
