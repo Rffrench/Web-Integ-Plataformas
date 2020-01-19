@@ -11,8 +11,7 @@
 
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/styleslogin.css">
-    <link rel="stylesheet" href="/css/mqsstyleslogin.css">
+    <link rel="stylesheet" href="/css/stylessolicitar-inspeccion.css">
     <link rel="stylesheet" href="/css/mqsbase.css"> <!-- Media queries for base html -->
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
@@ -65,6 +64,24 @@
                 <a href="/login.html" id="btn-login"><i class="fas fa-user"></i>Login</a>
             </nav>
         </header>
+
+        <main>
+
+            <h1>Solicitar Inspección</h1>
+
+            <form action="/solicitarinsp" id="inspeccion-form" method="POST">
+                <input type="text" name="inspeccion-direccion" id="inspeccion-direccion" class="fill-input"
+                            placeholder="Direccion" autofocus="true" maxlength="25" required>
+
+
+                            
+                <h3 class="inspeccion-info">Descuento Banco: </h3>
+                <h3 class="inspeccion-info">Valor Inspección: </h3>
+
+                <button type="submit">Solicitar Inspección</button>
+            </form>
+
+        </main>
 
 <footer id="main-footer">
 

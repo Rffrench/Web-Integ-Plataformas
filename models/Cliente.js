@@ -1,11 +1,10 @@
+
 class Cliente{
-    constructor(username,password,nombre,email){
-        this.username = username;
-        this.password=password;
-        this.nombre=nombre;
+    constructor(email,nombre){
         this.email=email;
+        this.nombre=nombre;
+        
     }
 }
-
 
 module.exports = Cliente;

@@ -1,0 +1,21 @@
+main{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 130px 0 200px;
+}
+
+main h1{
+    font-size: 3em;
+    margin: 20px 0;
+}
+
+inspeccion-form{
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+padding: 0 50px;
+}

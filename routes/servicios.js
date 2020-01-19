@@ -1,29 +1,13 @@
 const express    = require('express');
 const oracledb    = require('oracledb');
-const router        = express.Router(); 
-/* const cors = require('cors')
-
-app.use(cors()); */
+const router        = express.Router();
+const dbConfig =require('../dbconfig.js') ;
 
 //configuracion datos DB
 //la configuracion puede estar en el archivo .env
-dbConfig = {
-	user          : process.env.NODE_ORACLEDB_USER || "okcasa",
-	password      : process.env.NODE_ORACLEDB_PASSWORD ,
-	connectString : process.env.NODE_ORACLEDB_CONNECTIONSTRING || "localhost:1521/xe",
-	externalAuth  : process.env.NODE_ORACLEDB_EXTERNALAUTH ? true : false
-};
-console.log("Config DB:")	
-console.log(dbConfig)
 
-	//Configuracion para todas las rutas de localhost
-	/* app.all('/*', function(req, res, next) 
-	{
-		//Headers no seguros, solo de prueba, permite CSRF
-		res.header("Access-Control-Allow-Origin", "*");
-		res.header("Access-Control-Allow-Headers", "X-Requested-With");
-		next();
-	}); */
+console.log("Config DB:");	
+console.log(dbConfig);
 
 	//Obtiene todos los servicios y retorna un json
 	router.get("/", async (req, res, next) => 
@@ -38,11 +22,7 @@ console.log(dbConfig)
 		//consulta
 		const result =  await conexion.execute
 		(
-			// query
-			`
-			SELECT *
-			FROM servicio
-			`,// poner como variable, mayor seguridad, https://github.com/oracle/node-oracledb/issues/946
+			`SELECT * FROM servicio`,
 			{
 				//opcional
 				// maxRows: 1
@@ -50,18 +30,19 @@ console.log(dbConfig)
 		//MAGIA DE EXPRESS - USA PROMESAS - RETORNA EL JSON.
 		).then(rows => 
 			{	
-				res.json(rows);
+				res.status(200).json(rows);
 			})
 	  		.catch(err => {
 				return
-	  		});;
-		conexion.close()
+	  		});
+		
 		//Informacion de la consulta
 		console.log(result.rows);
-		}catch (err) {console.error(err);
-  		}finally 
+		}catch (err) {
+			console.error(err);
+		}finally 
   		{
-			
+			conexion.close();
 	  		
 		}		
     });
