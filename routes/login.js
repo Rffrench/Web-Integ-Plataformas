@@ -17,11 +17,15 @@ router.post('/registerauth', async (req, res, next) => {
         console.log(cliente);
         conexion = await oracledb.getConnection(dbConfig);
         const result = await conexion.execute(
-            `INSERT INTO Cliente (IDCLIENTE,EMAIL,NOMBRE)  VALUES (:id,:em, :nom)`,
+            `INSERT INTO Cliente (EMAIL,NOMBRE)  VALUES (:em, :nom)`,
             {
-                id: {val:101},
                 em: {val: req.body.email},
                 nom: {val: req.body.name}
+            }
+        );
+        await conexion.execute(
+            `commit`,
+            {
             }
         );
         console.log(result.rowsAffected);
@@ -35,12 +39,20 @@ router.post('/registerauth', async (req, res, next) => {
     try {
         conexion = await oracledb.getConnection(dbConfig);
         const result = await conexion.execute(
-            `INSERT INTO Usuario (USERNAME,PASSWORD,IDCLIENTE) VALUES ( :usr, :pw, :id)`,
+            `
+            INSERT INTO usuario (username,password,idcliente)  
+            SELECT :usr,:pw, idcliente
+            FROM cliente WHERE ROWNUM = 1 order by idcliente desc
+            `,
             {
                 
                 usr: {val: req.body.username},
-                pw: {val: req.body.password},
-                id: {val:101}
+                pw: {val: req.body.password}
+            }
+        );
+        await conexion.execute(
+            `commit`,
+            {
             }
         );
         console.log(result.rowsAffected);
@@ -55,7 +67,7 @@ router.post('/registerauth', async (req, res, next) => {
 
 router.post('/loginauth', async (req, res, next) => {
     try {
-        console.log("Loguendo..")
+        console.log("Autenticando...")
         usuario = new Usuario(req.body.username, req.body.password);
         conexion = await oracledb.getConnection(dbConfig);
         console.log(usuario)
