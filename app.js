@@ -3,14 +3,36 @@ const app= express();
 const path = require('path');
 const port = process.env.PORT || 3000;
 const cors= require('cors');
+const pug= require('pug');
 
 /* const routes= require('./routes'); */
-const login = require('./routes/login');
+const login = require('./routes/login'); /* pa la otra usar un solo archivo que tenga las rutas de todos */
+const inspeccion = require('./routes/inspeccion');
+const servicios= require('./routes/api/servicios');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.set('views', path.join(__dirname,'views'));
+app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname , 'public')));
+
+app.get('/', (req,res,next)=>{
+	res.render('index');
+})
+
+app.get('/login', (req,res,next)=>{
+	res.render('login');
+})
+
+
+
+app.get('/solicitar-inspeccion', (req,res,next)=>{
+	app.use('/',inspeccion);
+	res.render('solicitar-inspeccion');
+	
+})
 
 /* app.all('/*', function(req, res, next) 
 	{
@@ -21,19 +43,9 @@ app.use(express.static(path.join(__dirname , 'public')));
 	}); */
 
 
-/* app.get('/public/login' ,(req,res,next) =>{
-	console.log('ss');
-})
-
-app.post('/loginauth',function (req,res,next){
-	console.log("da");
-	res.json(req.body);
-}) */
-
-
 app.use('/', login);
 
-
+app.use('/api/servicios', servicios)
 
 
 app.listen(port, ()=> console.log(`server started on port ${port} `))

@@ -1,0 +1,85 @@
+doctype pug
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0')
+  meta(name='description' content='Antivirus website')
+  title Antivirus Website
+  link(rel='stylesheet' href='/css/reset.css')
+  link(rel='stylesheet' href='/css/base.css')
+  link(rel='stylesheet' href='/css/stylessolicitar-inspeccion.css')
+  link(rel='stylesheet' href='/css/mqsbase.css')
+  // Media queries for base
+  link(href='https://fonts.googleapis.com/css?family=Poppins&display=swap' rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css?family=Abel&display=swap' rel='stylesheet')
+  // Google Fonts
+  script(src='/scripts/main.js')
+  script(src='https://kit.fontawesome.com/3178762777.js' crossorigin='anonymous')
+  // ICONS
+#container
+  header#topmenu(role='menu')
+    // Top bar
+    .mobile-menu
+      // Menu icon for screens under 800px
+      .bar1
+      .bar2
+      .bar3
+    #mobile-menu-pages
+      a(href='/') Inicio
+      a(href='#') Historial de Inspecciones y Seguimiento
+      a(href='/solicitar-inspeccion') Solicitar Inspecci&oacute;n
+      a(href='/login') Login
+    #mobile-request-icon
+      a(href='/solicitar-inspeccion')
+        i.fas.fa-file-signature
+    #logo
+      a(href='/')
+        img(src='/media/logo.png')
+    #mobile-login-icon
+      a(href='/login')
+        i.fas.fa-user
+    nav#menu-pages
+      // Main links
+      a(href='/') Inicio
+      a(href='#') Historial de Inspecciones y Seguimiento
+    nav#menu-main-pages
+      // Main buttons
+      a#btn-request(href='/solicitar-inspeccion')
+        i.fas.fa-file-signature
+        | Solicitar Inspecci&oacute;n
+      a#btn-login(href='/login')
+        i.fas.fa-user
+        | Login
+  main
+    h1 Solicitar Inspecci&oacute;n
+    form#inspeccion-form(action='/solicitarinsp' method='POST')
+      input#inspeccion-direccion.fill-input(type='text' name='inspeccion-direccion' placeholder='Direccion' autofocus='true' maxlength='25' required='')
+      #servicios-group
+        input#servicio1(type='checkbox' name='servicio1')
+        label#servicio1-label(for='servicio1')
+        input#servicio2(type='checkbox' name='servicio2')
+        label#servicio2-label(for='servicio2')
+        input#servicio3(type='checkbox' name='servicio3')
+        label#servicio3-label(for='servicio3')
+        input#servicio4(type='checkbox' name='servicio4')
+        label#servicio4-label(for='servicio4')
+      h3.inspeccion-info Descuento Banco: 
+      h3.inspeccion-info Valor Inspecci&oacute;n: 
+      button(type='submit') Solicitar Inspecci&oacute;n
+  footer#main-footer
+    nav#footer-pages
+      a(href='#') Sobre Nosotros
+      a(href='#') Trabaja con Nosotros
+      a(href='#') T&eacute;rminos y Condiciones
+      a(href='#') FAQ
+    #contact-info
+      h3 Cont&aacute;ctanos:
+      address
+        a(href='mailto:example@antivirus.com')
+          i.fas.fa-envelope
+          | ayuda@okcasa.com
+        a(href='tel:+13115552368')
+          i.fas.fa-phone-alt
+          | (+569) 89725830
+    #footer-info
+      h6 Todos los derechos reservados &copy;
+| L

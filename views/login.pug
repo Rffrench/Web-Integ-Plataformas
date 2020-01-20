@@ -1,0 +1,92 @@
+doctype pug
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0')
+  meta(name='description' content='Antivirus website')
+  title Antivirus Website
+  link(rel='stylesheet' href='/css/reset.css')
+  link(rel='stylesheet' href='/css/base.css')
+  link(rel='stylesheet' href='/css/styleslogin.css')
+  link(rel='stylesheet' href='/css/mqsstyleslogin.css')
+  link(rel='stylesheet' href='/css/mqsbase.css')
+  // Media queries for base
+  link(href='https://fonts.googleapis.com/css?family=Poppins&display=swap' rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css?family=Abel&display=swap' rel='stylesheet')
+  // Google Fonts
+  script(src='/scripts/main.js')
+  script(src='https://kit.fontawesome.com/3178762777.js' crossorigin='anonymous')
+  // ICONS
+#container
+  header#topmenu(role='menu')
+    // Top bar
+    .mobile-menu
+      // Menu icon for screens under 800px
+      .bar1
+      .bar2
+      .bar3
+    #mobile-menu-pages
+      a(href='/') Inicio
+      a(href='#') Historial de Inspecciones y Seguimiento
+      a(href='/solicitar-inspeccion') Solicitar Inspecci&oacute;n
+      a(href='/login') Login
+    #mobile-request-icon
+      a(href='/solicitar-inspeccion')
+        i.fas.fa-file-signature
+    #logo
+      a(href='/')
+        img(src='/media/logo.png')
+    #mobile-login-icon
+      a(href='/login')
+        i.fas.fa-user
+    nav#menu-pages
+      // Main links
+      a(href='/') Inicio
+      a(href='#') Historial de Inspecciones y Seguimiento
+    nav#menu-main-pages
+      // Main buttons
+      a#btn-request(href='/solicitar-inspeccion')
+        i.fas.fa-file-signature
+        | Solicitar Inspecci&oacute;n
+      a#btn-login(href='/login')
+        i.fas.fa-user
+        | Login
+  #login-container
+    #login-register-panel
+      #panel-buttons
+        button#btn-login-panel.btn-selected(type='button') Iniciar Sesi&oacute;n
+        button#btn-register-panel.btn-not-selected(type='button') Registrarse
+      #login-panel.panel-body
+        form#login-form.panel-form(action='/loginauth' method='POST')
+          input#login-username.fill-input(type='text' name='username' placeholder='Nombre de Usuario' autofocus='true' maxlength='15' required='')
+          input#login-password.fill-input(name='password' type='password' placeholder='Contraseña' maxlength='35' required='')
+          #login-remember-me-group
+            input#login-remember-me-btn(type='checkbox' name='login-remember-me-btn')
+            label#login-remember-me-label(for='login-remember-me-btn') Recordarme
+          button(type='submit') Iniciar Sesi&oacute;n
+          a#login-forgot-password-link(href='#') No puedo acceder a mi cuenta
+      #register-panel.panel-body
+        form#register-form.panel-form(action='/registerauth' method='POST')
+          input#register-email.fill-input(type='email' name='email' placeholder='Email *' maxlength='254' required='')
+          input#register-username.fill-input(type='text' name='username' placeholder='Nombre de Usuario *' autofocus='true' maxlength='15' required='')
+          input#register-password.fill-input(type='password' name='password' placeholder='Contraseña *' maxlength='30' required='')
+          #register-form-name-group
+            input#register-name.fill-input(type='text' name='name' placeholder='Primer Nombre *' maxlength='20' required='')
+            input#register-lastname.fill-input(type='text' name='lastname' placeholder='Apellido *' maxlength='30' required='')
+          button(type='submit') Registrarse
+  footer#main-footer
+    nav#footer-pages
+      a(href='#') Sobre Nosotros
+      a(href='#') Trabaja con Nosotros
+      a(href='#') T&eacute;rminos y Condiciones
+      a(href='#') FAQ
+    #contact-info
+      h3 Cont&aacute;ctanos:
+      address
+        a(href='mailto:example@antivirus.com')
+          i.fas.fa-envelope
+          | ayuda@okcasa.com
+        a(href='tel:+13115552368')
+          i.fas.fa-phone-alt
+          | (+569) 89725830
+    #footer-info
+      h6 Todos los derechos reservados &copy;

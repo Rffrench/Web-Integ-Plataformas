@@ -1,0 +1,74 @@
+doctype pug
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0')
+  meta(name='description' content='Sitio OKCasa')
+  title OKCasa
+  link(rel='stylesheet' href='/css/reset.css')
+  link(rel='stylesheet' href='/css/base.css')
+  link(rel='stylesheet' href='/css/stylesindex.css')
+  link(rel='stylesheet' href='/css/mqsstylesindex.css')
+  link(rel='stylesheet' href='/css/mqsbase.css')
+  // Media queries for base
+  link(href='https://fonts.googleapis.com/css?family=Poppins&display=swap' rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css?family=Abel&display=swap' rel='stylesheet')
+  // Google Fonts
+  script(src='/scripts/main.js')
+  script(src='https://kit.fontawesome.com/3178762777.js' crossorigin='anonymous')
+  // ICONS
+#container
+  header#topmenu(role='menu')
+    // Top bar
+    .mobile-menu
+      // Menu icon for screens under 800px
+      .bar1
+      .bar2
+      .bar3
+    #mobile-menu-pages
+      a(href='/') Inicio
+      a(href='#') Historial de Inspecciones y Seguimiento
+      a(href='/solicitar-inspeccion') Solicitar Inspecci&oacute;n
+      a(href='/login') Login
+    #mobile-request-icon
+      a(href='/solicitar-inspeccion')
+        i.fas.fa-file-signature
+    #logo
+      a(href='/')
+        img(src='/media/logo.png')
+    #mobile-login-icon
+      a(href='/login')
+        i.fas.fa-user
+    nav#menu-pages
+      // Main links
+      a(href='/') Inicio
+      a(href='#') Historial de Inspecciones y Seguimiento
+    nav#menu-main-pages
+      // Main buttons
+      a#btn-request(href='/solicitar-inspeccion')
+        i.fas.fa-file-signature
+        | Solicitar Inspecci&oacute;n
+      a#btn-login(href='/login')
+        i.fas.fa-user
+        | Login
+  section#main-cover
+    #main-cover-content
+      h1 OK CASA es la soluci&oacute;n que andabas buscando
+      p Solicita una Inspecci&oacute;n para tu hogar y qu&eacute;date tranquilo de una vez!
+      a(href='/solicitar-inspeccion') Solicitar Inspecci&oacute;n
+  footer#main-footer
+    nav#footer-pages
+      a(href='#') Sobre Nosotros
+      a(href='#') Trabaja con Nosotros
+      a(href='#') T&eacute;rminos y Condiciones
+      a(href='#') FAQ
+    #contact-info
+      h3 Cont&aacute;ctanos:
+      address
+        a(href='mailto:example@antivirus.com')
+          i.fas.fa-envelope
+          | ayuda@okcasa.com
+        a(href='tel:+13115552368')
+          i.fas.fa-phone-alt
+          | (+569) 89725830
+    #footer-info
+      h6 Todos los derechos reservados &copy;
