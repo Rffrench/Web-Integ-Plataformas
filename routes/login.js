@@ -5,6 +5,8 @@ const dbConfig = require('../dbconfig.js');
 const Cliente = require('../models/Cliente.js')
 const Usuario = require('../models/Usuario');
 
+oracledb.autoCommit=true;
+
 let conexion;
 
 router.post('/registerauth', async (req, res, next) => {
@@ -21,11 +23,6 @@ router.post('/registerauth', async (req, res, next) => {
             {
                 em: {val: req.body.email},
                 nom: {val: req.body.name}
-            }
-        );
-        await conexion.execute(
-            `commit`,
-            {
             }
         );
         console.log(result.rowsAffected);
@@ -48,11 +45,6 @@ router.post('/registerauth', async (req, res, next) => {
                 
                 usr: {val: req.body.username},
                 pw: {val: req.body.password}
-            }
-        );
-        await conexion.execute(
-            `commit`,
-            {
             }
         );
         console.log(result.rowsAffected);

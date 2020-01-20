@@ -3,6 +3,8 @@ const oracledb = require('oracledb');
 const router = express.Router();
 const dbConfig = require('../dbconfig.js');
 
+oracledb.autoCommit=true;
+
 let conexion;
 console.log("insp");
 //Obtiene todos los servicios y retorna un json
@@ -25,7 +27,7 @@ router.get("/", async (req, res, next) => {
                 //MAGIA DE EXPRESS - USA PROMESAS - RETORNA EL JSON.
             ).then(rows => {
                 console.log(rows);
-                res.render('solicitar-inspeccion', {servicios: rows})
+                res.render('solicitar-inspeccion', { servicios: rows })
             })
             .catch(err => {
                 res.send(err);
@@ -43,18 +45,18 @@ router.get("/", async (req, res, next) => {
 router.post('/solicitarinsp', async (req, res, next) => {
 
     try {
-        fecha= new Date();
-        
+        fecha = new Date();
+
         console.log(fecha);
         conexion = await oracledb.getConnection(dbConfig);
         const result = await conexion.execute(
-            `INSERT INTO Solicitud (IDSOLICITUD,VALORINSP,DESCUENTO,IDCLIENTE,FECHASOLICITUD)  VALUES (:id,:va, :dscto, :idcl, :fec)`,
+            `INSERT INTO Solicitud (VALORINSP,DESCUENTO,IDCLIENTE,FECHASOLICITUD)
+            SELECT :va,:dscto, idcliente, :fec
+            FROM cliente WHERE ROWNUM = 1 order by idcliente desc`,
             {
-                id: {val:101},
-                va: {val: req.body.email},
-                dscto: {val: req.body.name},
-                idcl: {val: 2},
-                fec: {val: fecha}
+                va: { val: req.body.email },
+                dscto: { val: req.body.name },
+                fec: { val: fecha }
             }
         );
         console.log(result.rowsAffected);

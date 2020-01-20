@@ -3,6 +3,7 @@ const oracledb    = require('oracledb');
 const router        = express.Router();
 const dbConfig =require('../../dbconfig.js') ;
 
+oracledb.autoCommit=true;
 //configuracion datos DB
 //la configuracion puede estar en el archivo .env
 

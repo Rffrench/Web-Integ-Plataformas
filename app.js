@@ -3,7 +3,6 @@ const app= express();
 const path = require('path');
 const port = process.env.PORT || 3000;
 const cors= require('cors');
-const pug= require('pug');
 
 /* const routes= require('./routes'); */
 const login = require('./routes/login'); /* pa la otra usar un solo archivo que tenga las rutas de todos */
@@ -25,8 +24,6 @@ app.get('/', (req,res,next)=>{
 app.get('/login', (req,res,next)=>{
 	res.render('login');
 })
-
-
 
 app.get('/solicitar-inspeccion', (req,res,next)=>{
 	app.use('/',inspeccion);
