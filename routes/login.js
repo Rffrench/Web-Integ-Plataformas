@@ -71,6 +71,7 @@ router.post('/loginauth', async (req, res, next) => {
             }
         );
         console.log(parseInt(result.rows));
+        res.redirect('/');
 
     } catch (err) {
         console.error(err);

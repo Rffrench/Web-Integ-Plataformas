@@ -36,3 +36,21 @@ padding: 0 50px;
     transition: ease 0.2s;
 
 }
+
+#servicios-group{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.servicio-wrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#servicios-group input[type="checkbox"],label{
+    margin: 10px;
+}
