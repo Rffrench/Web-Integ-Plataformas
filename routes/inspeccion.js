@@ -68,8 +68,8 @@ router.post('/solicitarinsp', async (req, res, next) => {
             SELECT :va,:dscto, idcliente, :fec
             FROM cliente WHERE ROWNUM = 1 order by idcliente desc`,
             {
-                va: { val: req.body.email },
-                dscto: { val: req.body.name },
+                va: { val: 12 },
+                dscto: { val: 1 },
                 fec: { val: fecha }
             }
         );
