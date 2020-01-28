@@ -2,13 +2,27 @@ const express = require('express');
 const oracledb = require('oracledb');
 const router = express.Router();
 const dbConfig = require('../dbconfig.js');
+const APIHelper= require('../routes/APIHelper');
 
-oracledb.autoCommit=true;
+oracledb.autoCommit = true;
+
+function apiCallServicios() {
+    var servicios;
+    APIHelper.make_API_call('http://ec2-3-15-12-67.us-east-2.compute.amazonaws.com:3000/servicios')
+    .then(response=>{
+        console.log(response.rows)
+        servicios=0;
+    }).catch(error =>{
+        console.log(error);
+    })
+    return servicios;
+    
+}
 
 let conexion;
-console.log("insp");
+
 //Obtiene todos los servicios y retorna un json
-router.get("/", async (req, res, next) => {
+/* router.get("/", async (req, res, next) => {
     res.render('solicitar-inspeccion');
     console.log("Consultando todos los servicios");
     console.log('Conectandose con la base de datos...');
@@ -27,7 +41,7 @@ router.get("/", async (req, res, next) => {
                 //MAGIA DE EXPRESS - USA PROMESAS - RETORNA EL JSON.
             ).then(rows => {
                 console.log(rows);
-                res.render('solicitar-inspeccion', { servicios: rows })
+                res.render('/solicitar-inspeccion', { servicios: rows })
             })
             .catch(err => {
                 res.send(err);
@@ -40,7 +54,7 @@ router.get("/", async (req, res, next) => {
         conexion.close();
 
     }
-});
+}); */
 
 router.post('/solicitarinsp', async (req, res, next) => {
 
@@ -54,8 +68,8 @@ router.post('/solicitarinsp', async (req, res, next) => {
             SELECT :va,:dscto, idcliente, :fec
             FROM cliente WHERE ROWNUM = 1 order by idcliente desc`,
             {
-                va: { val: req.body.email },
-                dscto: { val: req.body.name },
+                va: { val: 12 },
+                dscto: { val: 1 },
                 fec: { val: fecha }
             }
         );
@@ -69,4 +83,4 @@ router.post('/solicitarinsp', async (req, res, next) => {
 });
 
 
-module.exports = router;
+module.exports = {router: router, apiCallServicios: apiCallServicios}; /* se pueden exportar 2 funciones si uno quiere y llamarlas */

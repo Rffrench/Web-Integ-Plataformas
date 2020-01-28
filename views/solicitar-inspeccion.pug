@@ -54,16 +54,21 @@ head
     form#inspeccion-form(action='/solicitarinsp' method='POST')
       input#inspeccion-direccion.fill-input(type='text' name='inspeccion-direccion' placeholder='Direccion' autofocus='true' maxlength='25' required='')
       #servicios-group
-        input#servicio1(type='checkbox' name='servicio1')
-        label#servicio1-label(for='servicio1')
-        input#servicio2(type='checkbox' name='servicio2')
-        label#servicio2-label(for='servicio2')
-        input#servicio3(type='checkbox' name='servicio3')
-        label#servicio3-label(for='servicio3')
-        input#servicio4(type='checkbox' name='servicio4')
-        label#servicio4-label(for='servicio4')
-      h3.inspeccion-info Descuento Banco: 
-      h3.inspeccion-info Valor Inspecci&oacute;n: 
+        for serv in servicios
+          .servicio-wrapper
+            input#servicio1(type='checkbox' name='servicio1')
+            label#servicio1-label(for='servicio1')= serv[0].DESCRIPCION
+          .servicio-wrapper
+            input#servicio2(type='checkbox' name='servicio2')
+            label#servicio2-label(for='servicio2')= serv[1].DESCRIPCION
+          .servicio-wrapper
+            input#servicio3(type='checkbox' name='servicio3')
+            label#servicio3-label(for='servicio3')= serv[2].DESCRIPCION
+          .servicio-wrapper  
+            input#servicio4(type='checkbox' name='servicio4')
+            label#servicio4-label(for='servicio4')= serv[3].DESCRIPCION
+      h3.inspeccion-info Descuento Banco: $10.000
+      h3.inspeccion-info Valor Inspecci&oacute;n: $25.000
       button(type='submit') Solicitar Inspecci&oacute;n
   footer#main-footer
     nav#footer-pages

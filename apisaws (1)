@@ -1,0 +1,4 @@
+APIS
+ec2-3-15-12-67.us-east-2.compute.amazonaws.com:3001/equiposdisponibles
+ec2-3-15-12-67.us-east-2.compute.amazonaws.com:3000/servicios
+ec2-3-15-12-67.us-east-2.compute.amazonaws.com:3002/solicitudes

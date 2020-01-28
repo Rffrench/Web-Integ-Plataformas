@@ -20,6 +20,11 @@ main h1{
 padding: 0 50px;
 }
 
+#inspeccion-direccion.fill-input{
+    width: 30%;
+    margin: 5px 0 15px;
+}
+
 #inspeccion-form button{
     width: 10%;
     height: 40px;
@@ -35,4 +40,31 @@ padding: 0 50px;
     background-color: rgb(4, 1, 197);
     transition: ease 0.2s;
 
+}
+
+.inspeccion-info{
+    margin: 10px 0;
+}
+
+.inspeccion-info:last-of-type{
+    margin-bottom: 30px;
+}
+
+#servicios-group{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 60%;
+    margin: 15px ;
+}
+
+.servicio-wrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#servicios-group input[type="checkbox"],label{
+    margin: 10px;
 }
